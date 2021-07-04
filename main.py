@@ -3,7 +3,6 @@ import re
 import subprocess
 import sys
 import traceback
-from io import BytesIO
 
 from PyQt5.QtCore import QObject, pyqtSlot
 from PyQt5.QtCore import Qt
@@ -81,6 +80,9 @@ def on_return_press():
 
 
 if __name__ == '__main__':
+    if sys.platform != 'win32':
+        exit()
+
     app = QApplication(sys.argv)
     window = QMainWindow()
     window.setWindowTitle('Check USB by PID')
